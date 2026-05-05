@@ -2,7 +2,8 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import AnimateOnScroll from '../components/AnimateOnScroll';
+import { motion } from 'motion/react';
+import { Mail, Globe, MapPin, Phone, ArrowRight, MessageSquare, BookOpen, ShieldCheck, Zap, Database, Briefcase, Code, Send } from 'lucide-react';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -35,7 +36,6 @@ export default function Contact() {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Validate required fields
     if (!formData.name || !formData.email || !formData.service || !formData.message || !formData.privacy) {
       setFormStatus({
         submitted: false,
@@ -64,10 +64,9 @@ export default function Contact() {
       setFormStatus({
         submitted: true,
         error: false,
-        message: 'Thank you for your message! We will get back to you within 24 hours.'
+        message: 'Message intercepted. Our AI agents have prioritized your inquiry for immediate review.'
       });
 
-      // Reset form
       setFormData({
         name: '',
         email: '',
@@ -81,7 +80,7 @@ export default function Contact() {
       setFormStatus({
         submitted: false,
         error: true,
-        message: 'Failed to send message. Please try again later.'
+        message: 'Sync failed. Please reach out directly via info@orcalex.ai'
       });
     } finally {
       setIsSubmitting(false);
@@ -89,396 +88,284 @@ export default function Contact() {
   };
 
   return (
-    <section className="py-20 bg-white">
-      <div className="container mx-auto px-4">
-        <AnimateOnScroll animation="animate-fade-in" delay={0}>
-        <div className="text-center mb-16">
-          <h1 className="text-3xl md:text-4xl font-bold mb-4">Get in Touch</h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Ready to transform your business with cutting-edge AI solutions? Contact us today.
-          </p>
+    <main className="pt-32 pb-20 bg-white min-h-screen">
+      <div className="container mx-auto px-6 max-w-7xl">
+        {/* Header */}
+        <div className="mb-24 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-premium text-xs font-bold uppercase tracking-widest mb-8"
+          >
+            Direct Integration
+          </motion.div>
+          <motion.h1 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+            className="text-5xl md:text-8xl font-medium tracking-tight mb-8"
+          >
+            Connect with <br /> OrcaLex
+          </motion.h1>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="text-xl md:text-2xl text-gray-400 font-light max-w-2xl mx-auto leading-relaxed"
+          >
+            Ready to deploy specialized intelligence? Reach out to schedule a consultation with our implementation leads.
+          </motion.p>
         </div>
-        </AnimateOnScroll>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-          <div>
-            <AnimateOnScroll animation="animate-slide-in-left" delay={200}>
-            <div className="bg-gray-50 rounded-xl p-8 shadow-sm">
-              <h2 className="text-2xl font-bold mb-6">Contact Information</h2>
-
-              <div className="space-y-6">
-                <ContactInfo
-                  icon={
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                    </svg>
-                  }
-                  title="Email"
-                  content="info@orcalex.ai"
-                  link="mailto:info@orcalex.ai"
-                />
-
-                <ContactInfo
-                  icon={
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                  }
-                  title="Website"
-                  content="orcalex.ai"
-                  link="https://orcalex.ai"
-                />
-
-                <ContactInfo
-                  icon={
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                    </svg>
-                  }
-                  title="Location"
-                  content="Hyderabad, India"
-                />
-              </div>
-
-              <div className="mt-8">
-                <h3 className="font-semibold text-lg mb-4">Connect With Us</h3>
-                <div className="flex space-x-4">
-                  <SocialLink
-                    href="https://linkedin.com/in/dr-praveen-jambholkar"
-                    icon={
-                      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-                      </svg>
-                    }
-                  />
-
-                  <SocialLink
-                    href="tel:+918008066228"
-                    icon={
-                      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                        <path fillRule="evenodd" d="M2.25 3a.75.75 0 0 1 .75-.75h3.586a.75.75 0 0 1 .53.22l2.122 2.121a.75.75 0 0 1 0 1.061L7.91 7.5a.75.75 0 0 0-.164.823 11.046 11.046 0 0 0 6.931 6.931.75.75 0 0 0 .823-.164l1.848-1.848a.75.75 0 0 1 1.061 0l2.122 2.121a.75.75 0 0 1 .22.53v3.586a.75.75 0 0 1-.75.75H18A15.75 15.75 0 0 1 2.25 6V3z" clipRule="evenodd" />
-                      </svg>
-                    }
-                  />
-
-                  <SocialLink
-                    href="https://twitter.com/orcalextech"
-                    icon={
-                      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                        <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723 10.054 10.054 0 01-3.127 1.184 4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
-                      </svg>
-                    }
-                  />
-
-                  <SocialLink
-                    href="https://github.com/orcalextech"
-                    icon={
-                      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                        <path fillRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clipRule="evenodd" />
-                      </svg>
-                    }
-                  />
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 mb-32 items-start">
+          {/* Left Column: Info & CTA Cards */}
+          <div className="lg:col-span-5 space-y-12">
+            <motion.div 
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="space-y-8"
+            >
+              <h2 className="text-3xl font-medium tracking-tight mb-8">Intelligence HQ</h2>
+              <ContactInfoItem icon={<Mail />} title="Global Inquiries" content="info@orcalex.ai" link="mailto:info@orcalex.ai" />
+              <ContactInfoItem icon={<Globe />} title="Digital Presence" content="orcalex.ai" link="https://orcalex.ai" />
+              <ContactInfoItem icon={<MapPin />} title="Primary Cluster" content="Hyderabad, India" />
+              
+              <div className="pt-8">
+                <p className="text-sm font-bold uppercase tracking-widest text-black mb-6">Social Nodes</p>
+                <div className="flex gap-4">
+                  <SocialNode href="https://linkedin.com/in/dr-praveen-jambholkar" icon={<Globe />} />
+                  <SocialNode href="https://twitter.com/orcalextech" icon={<Send />} />
+                  <SocialNode href="https://github.com/orcalextech" icon={<Code />} />
+                  <SocialNode href="tel:+918008066228" icon={<Phone />} />
                 </div>
               </div>
-            </div>
-            </AnimateOnScroll>
+            </motion.div>
 
-            <AnimateOnScroll animation="animate-fade-in-up" delay={400}>
-            <div className="mt-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl p-8 text-white shadow-md">
-              <h2 className="text-2xl font-bold mb-4">Schedule a Demo</h2>
-              <p className="mb-6">
-                Want to see our AI solutions in action? Schedule a personalized demo with our team.
-              </p>
-              <Link
-                href="/demo"
-                className="inline-block bg-white text-blue-600 px-6 py-3 rounded-full font-medium hover:shadow-lg transition-all duration-300"
-              >
-                Book a Demo
-              </Link>
-            </div>
-            </AnimateOnScroll>
-
-            <AnimateOnScroll animation="animate-fade-in" delay={600}>
-            <div className="mt-8 bg-gray-50 rounded-xl p-8 shadow-sm">
-              <h2 className="text-2xl font-bold mb-4">Office Location</h2>
-              <div className="space-y-6">
-                <OfficeLocation
-                  city="Hyderabad"
-                  address="Orcalex Technologies, 4th Floor, Veer Chambers, Prakash Nagar, Hyderabad, Telangana 500016"
-                  country="India"
-                />
+            <motion.div 
+               initial={{ opacity: 0, x: -20 }}
+               whileInView={{ opacity: 1, x: 0 }}
+               viewport={{ once: true }}
+               transition={{ delay: 0.2 }}
+               className="glass-premium rounded-[2.5rem] p-10 relative overflow-hidden group"
+            >
+              <div className="relative z-10">
+                <h3 className="text-2xl font-medium mb-4">See Implementation</h3>
+                <p className="text-gray-400 font-light mb-8 leading-relaxed italic">
+                  &quot;OrcaLex doesn&apos;t just build agents; they engineer outcomes. See the difference in a live walkthrough.&quot;
+                </p>
+                <Link
+                  href="/demo"
+                  className="inline-flex items-center gap-4 text-black font-semibold group-hover:gap-6 transition-all"
+                >
+                  Book a Live Demo
+                  <ArrowRight className="w-5 h-5" />
+                </Link>
               </div>
-            </div>
-            </AnimateOnScroll>
+              <div className="absolute top-0 right-0 p-8 text-black/5 group-hover:text-black/10 transition-colors -rotate-12">
+                <BookOpen className="w-32 h-32" />
+              </div>
+            </motion.div>
+
+            <motion.div 
+               initial={{ opacity: 0, x: -20 }}
+               whileInView={{ opacity: 1, x: 0 }}
+               viewport={{ once: true }}
+               transition={{ delay: 0.3 }}
+               className="bg-black text-white rounded-[2.5rem] p-10"
+            >
+              <h3 className="text-2xl font-medium mb-4 text-white">Office Cluster</h3>
+              <p className="text-gray-400 font-light leading-relaxed mb-4">
+                Orcalex Technologies, 4th Floor, Veer Chambers, Prakash Nagar, Hyderabad, Telangana 500016
+              </p>
+              <p className="text-gray-500 text-sm">India • GMT +5:30</p>
+            </motion.div>
           </div>
 
-          <AnimateOnScroll animation="animate-slide-in-right" delay={800}>
-          <div className="bg-white rounded-xl shadow-md p-8">
-            <h2 className="text-2xl font-bold mb-6">Send Us a Message</h2>
+          {/* Right Column: Contact Form */}
+          <motion.div 
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="lg:col-span-7 bg-white rounded-[3rem] p-8 md:p-14 border border-gray-100 shadow-xl"
+          >
+            <h2 className="text-3xl font-medium tracking-tight mb-10">Transmit Requirements</h2>
 
-            {formStatus.submitted ? (
-              <div className="bg-green-50 border border-green-200 text-green-700 rounded-lg p-4 mb-6">
+            {formStatus.message && (
+              <motion.div 
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className={`p-6 rounded-2xl mb-10 text-sm font-medium ${formStatus.error ? 'bg-red-50 text-red-600 border border-red-100' : 'bg-black text-white'}`}
+              >
                 {formStatus.message}
-              </div>
-            ) : formStatus.error ? (
-              <div className="bg-red-50 border border-red-200 text-red-700 rounded-lg p-4 mb-6">
-                {formStatus.message}
-              </div>
-            ) : null}
+              </motion.div>
+            )}
 
-            <form onSubmit={handleSubmit}>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                <div>
-                  <label htmlFor="name" className="block text-gray-700 font-medium mb-2">
-                    Name <span className="text-red-500">*</span>
-                  </label>
+            <form onSubmit={handleSubmit} className="space-y-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div className="space-y-3">
+                  <label htmlFor="name" className="text-xs font-bold uppercase tracking-widest text-gray-500">Full Name</label>
                   <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    required
+                    type="text" id="name" name="name" value={formData.name} onChange={handleChange} required
+                    placeholder="E.g. Alan Turing"
+                    className="w-full bg-gray-50 border-none rounded-2xl px-6 py-4 focus:ring-2 focus:ring-black placeholder:text-gray-300 transition-all font-light"
                   />
                 </div>
-
-                <div>
-                  <label htmlFor="email" className="block text-gray-700 font-medium mb-2">
-                    Email <span className="text-red-500">*</span>
-                  </label>
+                <div className="space-y-3">
+                  <label htmlFor="email" className="text-xs font-bold uppercase tracking-widest text-gray-500">Corporate Email</label>
                   <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    required
+                    type="email" id="email" name="email" value={formData.email} onChange={handleChange} required
+                    placeholder="you@company.com"
+                    className="w-full bg-gray-50 border-none rounded-2xl px-6 py-4 focus:ring-2 focus:ring-black placeholder:text-gray-300 transition-all font-light"
                   />
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                <div>
-                  <label htmlFor="company" className="block text-gray-700 font-medium mb-2">
-                    Company
-                  </label>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div className="space-y-3">
+                  <label htmlFor="company" className="text-xs font-bold uppercase tracking-widest text-gray-500">Organization</label>
                   <input
-                    type="text"
-                    id="company"
-                    name="company"
-                    value={formData.company}
-                    onChange={handleChange}
-                    className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    type="text" id="company" name="company" value={formData.company} onChange={handleChange}
+                    className="w-full bg-gray-50 border-none rounded-2xl px-6 py-4 focus:ring-2 focus:ring-black placeholder:text-gray-300 transition-all font-light"
                   />
                 </div>
-
-                <div>
-                  <label htmlFor="phone" className="block text-gray-700 font-medium mb-2">
-                    Phone
-                  </label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  />
+                <div className="space-y-3">
+                  <label htmlFor="service" className="text-xs font-bold uppercase tracking-widest text-gray-500">Project Focus</label>
+                  <select
+                    id="service" name="service" value={formData.service} onChange={handleChange} required
+                    className="w-full bg-gray-50 border-none rounded-2xl px-6 py-4 focus:ring-2 focus:ring-black transition-all font-light appearance-none"
+                  >
+                    <option value="" disabled>Inquiry Type</option>
+                    <option value="EdTech Solutions">EdTech Optimization</option>
+                    <option value="Manufacturing AI">Factory Intelligence</option>
+                    <option value="RAG Implementation">RAG Engineering</option>
+                    <option value="LLM Fine-Tuning">Domain-Specific Tuning</option>
+                    <option value="Agentic AI Systems">Autonomous Workflows</option>
+                    <option value="AI Audits & Consulting">Strategic Consulting</option>
+                  </select>
                 </div>
               </div>
 
-              <div className="mb-6">
-                <label htmlFor="service" className="block text-gray-700 font-medium mb-2">
-                  Service of Interest <span className="text-red-500">*</span>
-                </label>
-                <select
-                  id="service"
-                  name="service"
-                  value={formData.service}
-                  onChange={handleChange}
-                  className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  required
-                >
-                  <option value="" disabled>Select a service</option>
-                  <option value="EdTech Solutions">EdTech Solutions</option>
-                  <option value="Manufacturing AI">Manufacturing AI</option>
-                  <option value="RAG Implementation">RAG Implementation</option>
-                  <option value="LLM Fine-Tuning">LLM Fine-Tuning</option>
-                  <option value="Agentic AI Systems">Agentic AI Systems</option>
-                  <option value="AI Audits & Consulting">AI Audits & Consulting</option>
-                </select>
-              </div>
-
-              <div className="mb-6">
-                <label htmlFor="message" className="block text-gray-700 font-medium mb-2">
-                  Message <span className="text-red-500">*</span>
-                </label>
+              <div className="space-y-3">
+                <label htmlFor="message" className="text-xs font-bold uppercase tracking-widest text-gray-500">Scope Details</label>
                 <textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  rows={5}
-                  className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  required
-                ></textarea>
+                  id="message" name="message" value={formData.message} onChange={handleChange} rows={5} required
+                  placeholder="Describe your current infrastructure bottleneck..."
+                  className="w-full bg-gray-50 border-none rounded-2xl px-6 py-4 focus:ring-2 focus:ring-black placeholder:text-gray-300 transition-all font-light"
+                />
               </div>
 
-              <div className="mb-6">
-                <label className="flex items-center">
-                  <input
-                    type="checkbox"
-                    name="privacy"
-                    checked={formData.privacy}
-                    onChange={handleChange}
-                    className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
-                    required
-                  />
-                  <span className="ml-2 text-sm text-gray-600">
-                    I agree to the <Link href="/privacy-policy" className="text-blue-600 hover:underline">Privacy Policy</Link> and consent to being contacted regarding my inquiry.
-                  </span>
-                </label>
+              <div className="flex items-center gap-4">
+                <input
+                  type="checkbox" name="privacy" checked={formData.privacy} onChange={handleChange} required
+                  className="w-6 h-6 rounded-lg text-black focus:ring-black border-gray-200"
+                />
+                <span className="text-xs text-gray-400 font-light leading-relaxed">
+                  I acknowledge that OrcaLex will process my data according to the <Link href="/privacy-policy" className="text-black font-semibold hover:underline">Privacy Policy</Link> for professional communication only.
+                </span>
               </div>
 
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-lg font-medium hover:shadow-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full bg-black text-white px-8 py-5 rounded-[1.5rem] font-semibold text-lg hover:bg-gray-900 transition-all active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed group"
               >
-                {isSubmitting ? 'Sending...' : 'Send Message'}
+                {isSubmitting ? 'Transmitting Data...' : (
+                  <span className="flex items-center justify-center gap-2">
+                    Send Inquiry
+                    <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
+                  </span>
+                )}
               </button>
-
-              <p className="text-sm text-gray-500 mt-4 text-center">
-                We will get back to you within 24 hours.
-              </p>
             </form>
-          </div>
-          </AnimateOnScroll>
+          </motion.div>
         </div>
 
-        <div className="mt-16">
-          <h2 className="text-2xl font-bold mb-8 text-center">Frequently Asked Questions</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <FAQ
-              question="What industries do you serve?"
-              answer="We serve a wide range of industries including education, manufacturing, healthcare, legal, finance, and retail. Our AI solutions are adaptable to various business contexts and can be customized for your specific industry needs."
+        {/* FAQ Section with Premium Styling */}
+        <section className="pt-20 border-t border-gray-100 mb-20">
+          <div className="mb-20">
+            <h2 className="text-4xl font-medium tracking-tight mb-4">Strategic FAQ</h2>
+            <p className="text-gray-400 font-light text-lg">Understanding the OrcaLex implementation process.</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+            <FAQItem 
+              icon={<Briefcase />}
+              question="What vertical focus do you have?" 
+              answer="While specialized in EdTech and Manufacturing, our RAG and GRPO frameworks are industry-agnostic and currently deployed across legal, finance, and logistics sectors."
             />
-
-            <FAQ
-              question="How long does implementation typically take?"
-              answer="Implementation timelines vary based on the complexity of the solution and your specific requirements. Simple implementations can be completed in 4-6 weeks, while more complex enterprise solutions may take 3-6 months. We'll provide a detailed timeline during our initial consultation."
+            <FAQItem 
+              icon={<Zap />}
+              question="Timelines for deployment?" 
+              answer="Standard implementation spans 6-12 weeks. Specialized fine-tuning clusters and complex agentic workflows may extend to 4-6 months depending on data readiness."
             />
-
-            <FAQ
-              question="Do you offer ongoing support after implementation?"
-              answer="Yes, we offer comprehensive support and maintenance packages for all our implementations. This includes regular updates, performance monitoring, and technical support to ensure your AI solutions continue to deliver optimal results."
+            <FAQItem 
+              icon={<ShieldCheck />}
+              question="How is security handled?" 
+              answer="We maintain zero-trust architectures. All models are deployed in hardened enclaves, and we never train our base models on client-specific proprietary metadata."
             />
-
-            <FAQ
-              question="How do you handle data privacy and security?"
-              answer="We take data privacy and security very seriously. All our solutions comply with relevant data protection regulations. We implement robust security measures including encryption, secure access controls, and regular security audits to protect your data."
+            <FAQItem 
+              icon={<Database />}
+              question="Database integration?" 
+              answer="Our stack integrates natively with existing ERPs, CRMs, and proprietary data lakes. We specialize in transforming unstructured legacy data into queryable assets."
             />
-
-            <FAQ
-              question="Can your solutions integrate with our existing systems?"
-              answer="Yes, our AI solutions are designed to integrate seamlessly with your existing systems and workflows. We have experience integrating with various CRMs, ERPs, LMSs, and custom software solutions."
+            <FAQItem 
+              icon={<MessageSquare />}
+              question="Ongoing optimization?" 
+              answer="Yes. We provide continuous drift monitoring and recalibration services to ensure your models maintain performance as real-world data distributions evolve."
             />
-
-            <FAQ
-              question="What makes OrcaLex different from other AI companies?"
-              answer="Our proprietary approaches to RAG implementation and GRPO-based fine-tuning deliver superior results with less data and computational resources. We focus on practical, business-oriented AI solutions that deliver measurable ROI rather than theoretical applications."
+            <FAQItem 
+              icon={<ArrowRight />}
+              question="AI Audit services?" 
+              answer="We offer standalone AI readiness audits to benchmark your current data infrastructure and identify high-ROI opportunities for specialized intelligence."
             />
           </div>
-        </div>
+        </section>
       </div>
-    </section>
+    </main>
   );
 }
 
-interface ContactInfoProps {
-  icon: React.ReactNode;
-  title: string;
-  content: string;
-  link?: string;
-}
-
-const ContactInfo: React.FC<ContactInfoProps> = ({ icon, title, content, link }) => {
+function ContactInfoItem({ icon, title, content, link }: { icon: React.ReactNode, title: string, content: string, link?: string }) {
   return (
-    <div className="flex items-start">
-      <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 mr-4">
-        {icon}
+    <div className="flex items-start gap-6 group">
+      <div className="w-14 h-14 rounded-2xl glass-premium flex items-center justify-center text-black group-hover:bg-black group-hover:text-white transition-colors">
+        {React.cloneElement(icon as React.ReactElement, { className: 'w-6 h-6' })}
       </div>
-      <div>
-        <h3 className="font-semibold text-lg">{title}</h3>
+      <div className="space-y-1">
+        <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400">{title}</p>
         {link ? (
-          <a href={link} className="text-gray-600 hover:text-blue-600 transition-colors">
+          <a href={link} className="text-lg font-medium text-black hover:text-gray-500 transition-colors">
             {content}
           </a>
         ) : (
-          <p className="text-gray-600">{content}</p>
+          <p className="text-lg font-medium text-black">{content}</p>
         )}
       </div>
     </div>
   );
-};
-
-interface SocialLinkProps {
-  href: string;
-  icon: React.ReactNode;
 }
 
-const SocialLink = ({ href, icon }: SocialLinkProps) => {
+function SocialNode({ href, icon }: { href: string; icon: React.ReactNode }) {
   return (
     <a
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center text-gray-600 hover:bg-blue-100 hover:text-blue-600 transition-colors"
+      className="w-12 h-12 rounded-xl bg-gray-50 flex items-center justify-center text-black hover:bg-black hover:text-white transition-all shadow-sm active:scale-90"
     >
-      {icon}
+      {React.cloneElement(icon as React.ReactElement, { className: 'w-5 h-5' })}
     </a>
   );
-};
-
-interface OfficeLocationProps {
-  city: string;
-  address: string;
-  country: string;
-  comingSoon?: boolean;
 }
 
-const OfficeLocation = ({ city, address, country, comingSoon = false }: OfficeLocationProps) => {
+function FAQItem({ question, answer, icon }: { question: string, answer: string, icon: React.ReactNode }) {
   return (
-    <div className="flex items-start">
-      <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 mr-4">
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-        </svg>
+    <div className="space-y-6 group">
+      <div className="text-black opacity-20 group-hover:opacity-100 transition-opacity">
+        {React.cloneElement(icon as React.ReactElement, { className: 'w-8 h-8' })}
       </div>
-      <div>
-        <div className="flex items-center">
-          <h3 className="font-semibold text-lg">{city}</h3>
-          {comingSoon && (
-            <span className="ml-2 px-2 py-0.5 bg-blue-100 text-blue-600 rounded-full text-xs font-medium">
-              Coming Soon
-            </span>
-          )}
-        </div>
-        <p className="text-gray-600">{address}</p>
-        <p className="text-gray-600">{country}</p>
-      </div>
+      <h3 className="text-xl font-medium tracking-tight">{question}</h3>
+      <p className="text-gray-400 font-light leading-relaxed">{answer}</p>
     </div>
   );
-};
-
-const FAQ = ({ question, answer }) => {
-  return (
-    <div className="bg-gray-50 rounded-lg p-6">
-      <h3 className="font-semibold text-lg mb-2">{question}</h3>
-      <p className="text-gray-600">{answer}</p>
-    </div>
-  );
-};
+}
