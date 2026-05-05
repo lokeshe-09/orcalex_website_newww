@@ -291,7 +291,7 @@ export default function Contact() {
             <FAQItem 
               icon={<Briefcase />}
               question="What vertical focus do you have?" 
-              answer="While specialized in EdTech and Manufacturing, our RAG and GRPO frameworks are industry-agnostic and currently deployed across legal, finance, and logistics sectors."
+              answer="While specialized in EdTech and Manufacturing, our RAG and specialized fine-tuning frameworks (SFT, GRPO, GSPO, DR-GRPO) are industry-agnostic and currently deployed across legal, finance, and logistics sectors."
             />
             <FAQItem 
               icon={<Zap />}

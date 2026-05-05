@@ -97,14 +97,14 @@ export default function CaseStudies() {
             title="Healthcare Analytics Platform"
             category="Healthcare"
             challenge="Need to optimize patient care paths and hospital resource allocation dynamically."
-            solution="GRPO-based reasoning platform with predictive support for clinical decision workflows."
+            solution="Advanced reasoning platform using GRPO and DR-GRPO methods for stable, predictive clinical decision workflows."
             results={[
               "22% reduction in average stay duration",
               "15% improvement in outcome metrics",
               "35% faster clinical documentation",
               "Dynamic resource shifting automated"
             ]}
-            technologies={["RAG", "GRPO", "Predictive AI"]}
+            technologies={["RAG", "GRPO / DR-GRPO", "Predictive AI"]}
             testimonial={{
               quote: "Improved our quality of care significantly while reducing overhead.",
               author: "Dr. Ananya Patel",

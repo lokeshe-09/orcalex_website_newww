@@ -137,14 +137,14 @@ export default function Services() {
           <ServiceSection 
             id="fine-tuning"
             badge="Model Customization"
-            title="LLM Fine-Tuning (GRPO)"
-            description="Proprietary Gradient-Regularized Policy Optimization allows high performance with minimal training data points."
+            title="Advanced LLM Fine-Tuning"
+            description="We leverage a suite of state-of-the-art architectures including SFT, GRPO, GSPO, and DR-GRPO to deliver precision-tuned enterprise models."
             icon={<Settings2 className="w-8 h-8" />}
             features={[
-              "GRPO-based tuning",
-              "Minimal data requirements",
-              "Domain-specific expertise",
-              "Quantized deployment"
+              "Vision-Language Tuning (SFT)",
+              "RL without labeled answers (GRPO)",
+              "Enhanced Stability (DR-GRPO)",
+              "Sequence Optimization (GSPO)"
             ]}
             metrics={[
               { label: "Data Efficiency", value: "10x" },
@@ -260,34 +260,83 @@ const ServiceSection = ({ id, badge, title, description, icon, features, metrics
       className={`glass-premium p-10 rounded-[3rem] border-gray-100/50 shadow-sm ${reversed ? 'lg:order-1' : ''}`}
     >
       <h4 className="text-sm font-semibold text-gray-400 uppercase tracking-widest mb-10">Observed Performance</h4>
-      <div className="space-y-10">
+      <div className="grid grid-cols-1 gap-6">
         {metrics.map((metric, i) => (
-          <div key={i} className="group">
-            <div className="flex items-end justify-between mb-3">
-              <span className="text-gray-600 font-light">{metric.label}</span>
-              <span className="text-3xl font-medium tracking-tighter">{metric.value}</span>
+          <motion.div 
+            key={i}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: i * 0.1 }}
+            className="relative group overflow-hidden rounded-3xl border border-gray-100 bg-white p-8 shadow-sm hover:shadow-md transition-all"
+          >
+            {/* Visual Background Decoration */}
+            <div className="absolute top-0 right-0 w-32 h-32 -mr-8 -mt-8 bg-blue-50/30 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-700" />
+            
+            <div className="relative z-10 flex items-center justify-between">
+              <div>
+                <p className="text-xs font-mono uppercase tracking-widest text-gray-400 mb-2">{metric.label}</p>
+                <div className="flex items-baseline gap-2">
+                  <span className="text-5xl font-medium tracking-tighter text-black">
+                    {metric.value.replace(/[^0-9]/g, '')}
+                  </span>
+                  <span className="text-xl font-medium text-gray-400">
+                    {metric.value.includes('x') ? 'x' : metric.value.includes('%') ? '%' : ''}
+                  </span>
+                </div>
+              </div>
+              
+              {/* Creative Visual representation instead of progress bar */}
+              <div className="flex items-center gap-1 h-12">
+                {[...Array(5)].map((_, idx) => (
+                  <motion.div
+                    key={idx}
+                    animate={{ 
+                      height: [12, 24, 12, 32, 12][(idx + i) % 5],
+                      opacity: [0.3, 1, 0.3][(idx + i) % 3]
+                    }}
+                    transition={{ 
+                      repeat: Infinity, 
+                      duration: 2, 
+                      delay: idx * 0.2 
+                    }}
+                    className={`w-1.5 rounded-full ${idx > 2 ? 'bg-blue-600' : 'bg-black'}`}
+                  />
+                ))}
+              </div>
             </div>
-            <div className="h-1.5 w-full bg-gray-50 rounded-full overflow-hidden">
-              <motion.div 
-                initial={{ width: 0 }}
-                whileInView={{ width: '100%' }}
-                viewport={{ once: true }}
-                transition={{ duration: 1.5, delay: 0.2 + (i * 0.2) }}
-                className="h-full bg-black/80 rounded-full"
-              />
+            
+            <div className="mt-4 flex items-center gap-2">
+              <span className={`text-[10px] uppercase tracking-widest font-bold ${i % 2 === 0 ? 'text-blue-600' : 'text-green-600'}`}>
+                {i % 2 === 0 ? 'Peak Efficiency' : 'Optimized Cost'}
+              </span>
+              <div className="h-px flex-1 bg-gray-100" />
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
 
       <div className="mt-16 pt-10 border-t border-gray-100 grid grid-cols-2 gap-8">
-        <div className="text-center">
-          <div className="text-gray-400 text-[10px] uppercase tracking-[0.2em] mb-2 font-bold">Standard</div>
-          <div className="h-1 bg-gray-100 rounded-full" />
+        <div className="flex flex-col items-center gap-3">
+          <div className="text-gray-400 text-[10px] uppercase tracking-[0.2em] font-bold">Standard</div>
+          <div className="flex gap-1">
+            {[...Array(3)].map((_, i) => (
+              <div key={i} className="w-1.5 h-1.5 rounded-full bg-gray-100" />
+            ))}
+          </div>
         </div>
-        <div className="text-center">
-          <div className="text-black text-[10px] uppercase tracking-[0.2em] mb-2 font-bold">Orcalex</div>
-          <div className="h-1 bg-black rounded-full" />
+        <div className="flex flex-col items-center gap-3">
+          <div className="text-black text-[10px] uppercase tracking-[0.2em] font-bold">Orcalex</div>
+          <div className="flex gap-1">
+            {[...Array(3)].map((_, i) => (
+              <motion.div 
+                key={i} 
+                animate={{ scale: [1, 1.2, 1] }}
+                transition={{ repeat: Infinity, duration: 2, delay: i * 0.2 }}
+                className="w-1.5 h-1.5 rounded-full bg-black" 
+              />
+            ))}
+          </div>
         </div>
       </div>
     </motion.div>

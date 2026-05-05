@@ -62,23 +62,25 @@ export default function Technologies() {
               "Real-time knowledge sync"
             ]}
             insight="Our hybrid retrieval approach achieves 35% better retrieval accuracy compared to standard vector-only methods."
+            customVisual={<RAGVisual />}
           />
 
-          {/* GRPO Fine-Tuning */}
+          {/* Fine-Tuning Section */}
           <TechSection 
             id="fine-tuning"
             badge="Optimization"
-            title="GRPO Fine-Tuning"
-            description="Gradient-Regularized Policy Optimization allows us to fine-tune models with minimal data while preserving general reasoning."
+            title="Advanced LLM Fine-Tuning"
+            description="We utilize a multi-pronged approach (SFT, GRPO, GSPO, and DR-GRPO) to fine-tune models for mission-critical industrial applications."
             icon={<Settings2 className="w-6 h-6" />}
             features={[
-              "Requires 70% fewer training examples",
-              "Faster convergence speed",
-              "Domain-specific specialization",
-              "Superior task-specific performance"
+              "SFT: High-quality instruction tuning",
+              "GRPO: Efficient reinforcement learning",
+              "GSPO: Sequence-level importance sampling",
+              "DR-GRPO: Dead-reward stability guards"
             ]}
             reversed
-            insight="GRPO prevents catastrophic forgetting, allowing models to specialize without losing their core reasoning capabilities."
+            insight="Our multi-method fine-tuning pipeline ensures that models remain robust and stable while achieving peak performance in specialized domains."
+            customVisual={<FineTuningVisual />}
           />
 
           {/* SLMs */}
@@ -95,6 +97,7 @@ export default function Technologies() {
               "Quantized model weights"
             ]}
             insight="We implement advanced model distillation techniques to capture the essence of 70B models in tiny 3B footprints."
+            customVisual={<SLMVisual />}
           />
 
           {/* Agentic Synthetic Data */}
@@ -112,6 +115,7 @@ export default function Technologies() {
             ]}
             reversed
             insight="Synthetic data allows us to bypass the cold-start problem for domains with limited real-world datasets."
+            customVisual={<SyntheticDataVisual />}
           />
         </div>
 
@@ -135,9 +139,9 @@ export default function Technologies() {
                 </div>
               </div>
               <div className="space-y-8">
-                <ProgressItem label="Connection Speed" value={98} />
-                <ProgressItem label="Security Compliance" value={100} />
-                <ProgressItem label="Integration Versatility" value={92} />
+                <PerformanceCapsule label="Connection Speed" value={98} />
+                <PerformanceCapsule label="Security Compliance" value={100} />
+                <PerformanceCapsule label="Integration Versatility" value={92} />
               </div>
             </div>
           </div>
@@ -206,9 +210,176 @@ interface TechSectionProps {
   features: string[];
   insight: string;
   reversed?: boolean;
+  customVisual?: React.ReactNode;
 }
 
-const TechSection = ({ id, badge, title, description, icon, features, insight, reversed }: TechSectionProps) => (
+const FineTuningVisual = () => (
+  <div className="relative w-full aspect-square flex items-center justify-center p-4">
+    <motion.div 
+      initial={{ y: 40, opacity: 0 }}
+      whileInView={{ y: 0, opacity: 1 }}
+      transition={{ duration: 1, ease: "easeOut" }}
+      className="w-full bg-white rounded-[3rem] shadow-2xl border border-gray-100 overflow-hidden p-8"
+    >
+      <div className="flex items-center justify-between mb-8">
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 rounded-2xl bg-black flex items-center justify-center text-white">
+            <Settings2 className="w-5 h-5" />
+          </div>
+          <div>
+            <h4 className="text-sm font-medium">GRPO training</h4>
+            <p className="text-[10px] text-gray-400 font-mono uppercase tracking-widest">Active Session</p>
+          </div>
+        </div>
+        <div className="flex items-center gap-2">
+          <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+          <span className="text-[10px] font-mono text-gray-400 uppercase tracking-widest">Epoch 4/5</span>
+        </div>
+      </div>
+
+      <div className="space-y-6">
+        {/* Dynamic Loss Curve Simulation */}
+        <div className="h-32 w-full flex items-end gap-1 px-2">
+          {[...Array(20)].map((_, i) => (
+            <motion.div
+              key={i}
+              initial={{ height: 0 }}
+              whileInView={{ height: `${Math.max(10, 100 - (i * 4) - Math.random() * 20)}%` }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.05, duration: 1 }}
+              className="flex-1 bg-black/80 rounded-t-sm"
+            />
+          ))}
+        </div>
+        <div className="flex justify-between text-[8px] font-mono text-gray-300 uppercase tracking-widest">
+          <span>Start</span>
+          <span>Loss Gradient</span>
+          <span>Convergence</span>
+        </div>
+
+        <div className="grid grid-cols-2 gap-4 mt-8">
+          <div className="p-4 rounded-2xl bg-gray-50 border border-gray-100">
+            <div className="text-[10px] text-gray-400 mb-1">Learning Rate</div>
+            <div className="text-xl font-medium tracking-tighter">1.2e-5</div>
+          </div>
+          <div className="p-4 rounded-2xl bg-gray-50 border border-gray-100">
+            <div className="text-[10px] text-gray-400 mb-1">Batch Size</div>
+            <div className="text-xl font-medium tracking-tighter">256</div>
+          </div>
+        </div>
+      </div>
+    </motion.div>
+  </div>
+);
+
+const SyntheticDataVisual = () => (
+  <div className="relative w-full aspect-square flex items-center justify-center p-4">
+    <div className="relative w-80 h-80">
+      {/* Central Agent */}
+      <motion.div 
+        animate={{ scale: [1, 1.05, 1], rotate: [0, 5, 0] }}
+        transition={{ repeat: Infinity, duration: 4 }}
+        className="absolute inset-0 m-auto w-32 h-32 rounded-[2rem] bg-black text-white flex items-center justify-center shadow-2xl z-10"
+      >
+        <Bot className="w-12 h-12" />
+      </motion.div>
+
+      {/* Orbiting Agents */}
+      {[...Array(4)].map((_, i) => (
+        <motion.div
+          key={i}
+          animate={{ 
+            x: [
+              Math.cos(i * Math.PI / 2) * 140, 
+              Math.cos((i * Math.PI / 2) + Math.PI / 4) * 140,
+              Math.cos(i * Math.PI / 2) * 140
+            ],
+            y: [
+              Math.sin(i * Math.PI / 2) * 140, 
+              Math.sin((i * Math.PI / 2) + Math.PI / 4) * 140,
+              Math.sin(i * Math.PI / 2) * 140
+            ],
+            scale: [1, 1.1, 1]
+          }}
+          transition={{ repeat: Infinity, duration: 5 + i, ease: "linear" }}
+          className="absolute inset-0 m-auto w-16 h-16 rounded-2xl bg-white border border-gray-100 shadow-lg flex items-center justify-center text-black"
+        >
+          <Cpu className="w-6 h-6" />
+        </motion.div>
+      ))}
+
+      {/* Connection Lines */}
+      <svg className="absolute inset-0 w-full h-full -z-10 opacity-10">
+        <circle cx="160" cy="160" r="140" fill="none" stroke="black" strokeWidth="1" strokeDasharray="4 4" />
+      </svg>
+      
+      {/* Data Packets Animation */}
+      <motion.div 
+        animate={{ 
+          opacity: [0, 1, 0],
+          scale: [0.5, 1, 1.5],
+          rotate: 360
+        }}
+        transition={{ repeat: Infinity, duration: 3 }}
+        className="absolute inset-0 m-auto w-64 h-64 border border-blue-500/20 rounded-full"
+      />
+    </div>
+  </div>
+);
+
+const SLMVisual = () => (
+  <div className="relative w-full aspect-square flex items-center justify-center p-4">
+    <motion.div 
+      initial={{ scale: 0.9, opacity: 0 }}
+      whileInView={{ scale: 1, opacity: 1 }}
+      transition={{ duration: 1 }}
+      className="relative w-72 h-[500px] bg-black rounded-[3rem] border-[8px] border-gray-900 shadow-2xl overflow-hidden p-6"
+    >
+      <div className="w-20 h-6 bg-gray-900 rounded-full mx-auto mb-10" />
+      
+      <div className="space-y-6">
+        <div className="flex items-center gap-3">
+          <div className="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center text-white">
+            <Cpu className="w-4 h-4" />
+          </div>
+          <div className="text-white text-xs font-medium">Edge Inference Active</div>
+        </div>
+
+        <div className="glass-premium p-4 rounded-2xl bg-white/10 border-white/10 text-[10px] text-white/70 font-mono leading-relaxed">
+          <span className="text-blue-400">Loading</span> OrcaLex-3B...<br/>
+          <span className="text-green-400">Success</span> Quantization: 4-bit<br/>
+          <span className="text-yellow-400">Memory</span> usage: 1.8GB / 4.0GB
+        </div>
+
+        <div className="pt-4 space-y-3">
+          <div className="h-2 w-full bg-white/5 rounded-full overflow-hidden">
+            <motion.div 
+              initial={{ width: 0 }}
+              whileInView={{ width: '85%' }}
+              transition={{ duration: 2 }}
+              className="h-full bg-blue-500"
+            />
+          </div>
+          <div className="flex justify-between text-[8px] text-white/30 uppercase tracking-widest font-bold">
+            <span>Latency</span>
+            <span>24ms</span>
+          </div>
+        </div>
+
+        <div className="absolute bottom-10 left-6 right-6">
+          <div className="w-full py-3 rounded-xl bg-white text-black text-[10px] font-bold uppercase tracking-widest text-center shadow-lg">
+            Running Localy
+          </div>
+        </div>
+      </div>
+    </motion.div>
+    
+    {/* Background Glow */}
+    <div className="absolute inset-0 bg-blue-500/5 blur-[120px] -z-10" />
+  </div>
+);
+
+const TechSection = ({ id, badge, title, description, icon, features, insight, reversed, customVisual }: TechSectionProps) => (
   <section id={id} className={`grid grid-cols-1 lg:grid-cols-2 gap-20 items-center ${reversed ? 'lg:flex-row-reverse' : ''}`}>
     <motion.div 
       initial={{ opacity: 0, x: reversed ? 20 : -20 }}
@@ -240,39 +411,123 @@ const TechSection = ({ id, badge, title, description, icon, features, insight, r
       initial={{ opacity: 0, scale: 0.95 }}
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true }}
-      className={`glass-premium p-1 aspect-square rounded-[4rem] relative overflow-hidden group ${reversed ? 'lg:order-1' : ''}`}
+      className={`relative w-full ${reversed ? 'lg:order-1' : ''}`}
     >
-      <div className="absolute inset-0 bg-gradient-to-br from-gray-50 to-white" />
-      <div className="absolute inset-0 flex items-center justify-center">
-        <div className="relative w-48 h-48">
-          <div className="absolute inset-0 bg-black/5 rounded-full animate-ping" />
-          <div className="absolute inset-4 bg-black/10 rounded-full animate-pulse" />
-          <div className="absolute inset-8 bg-black rounded-full flex items-center justify-center text-white">
-            {icon}
+      {customVisual ? customVisual : (
+        <div className="glass-premium p-1 aspect-square rounded-[4rem] relative overflow-hidden group">
+          <div className="absolute inset-0 bg-gradient-to-br from-gray-50 to-white" />
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="relative w-48 h-48">
+              <div className="absolute inset-0 bg-black/5 rounded-full animate-ping" />
+              <div className="absolute inset-4 bg-black/10 rounded-full animate-pulse" />
+              <div className="absolute inset-8 bg-black rounded-full flex items-center justify-center text-white">
+                {icon}
+              </div>
+            </div>
           </div>
+          {/* Decorative dots */}
+          <div className="absolute top-10 left-10 w-2 h-2 bg-black/20 rounded-full" />
+          <div className="absolute bottom-10 right-10 w-2 h-2 bg-black/20 rounded-full" />
         </div>
-      </div>
-      {/* Decorative dots */}
-      <div className="absolute top-10 left-10 w-2 h-2 bg-black/20 rounded-full" />
-      <div className="absolute bottom-10 right-10 w-2 h-2 bg-black/20 rounded-full" />
+      )}
     </motion.div>
   </section>
 );
 
-const ProgressItem = ({ label, value }: { label: string; value: number }) => (
-  <div className="space-y-3">
-    <div className="flex justify-between items-end">
-      <span className="text-gray-600 font-light">{label}</span>
-      <span className="text-2xl font-medium">{value}%</span>
+const RAGVisual = () => (
+  <div className="relative w-full aspect-square flex items-center justify-center p-4">
+    {/* IDE Window */}
+    <motion.div 
+      initial={{ y: 40, opacity: 0 }}
+      whileInView={{ y: 0, opacity: 1 }}
+      transition={{ duration: 1, ease: "easeOut" }}
+      className="w-full bg-[#0d1117] rounded-3xl shadow-2xl border border-gray-800 overflow-hidden"
+    >
+      {/* Header */}
+      <div className="bg-[#161b22] px-6 py-4 flex items-center justify-between border-b border-gray-800">
+        <div className="flex gap-2">
+          <div className="w-3 h-3 rounded-full bg-[#ff5f56]" />
+          <div className="w-3 h-3 rounded-full bg-[#ffbd2e]" />
+          <div className="w-3 h-3 rounded-full bg-[#27c93f]" />
+        </div>
+        <div className="text-xs font-mono text-gray-500 uppercase tracking-widest">orcalex_rag.py</div>
+        <div className="w-12" />
+      </div>
+      
+      {/* Code Body */}
+      <div className="p-8 font-mono text-sm leading-relaxed overflow-x-hidden">
+        <div className="flex gap-6">
+          <div className="text-gray-600 font-light select-none text-right w-6">
+            1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8<br/>9<br/>10<br/>11<br/>12
+          </div>
+          <div className="flex-1">
+            <span className="text-[#ff7b72]">async def</span> <span className="text-[#d2a8ff]">retrieve_context</span>(query: <span className="text-[#ff7b72]">str</span>):<br/>
+            &nbsp;&nbsp;<span className="text-gray-500"># Cross-referenced extraction</span><br/>
+            &nbsp;&nbsp;context = <span className="text-[#ff7b72]">await</span> <span className="text-[#79c0ff]">VectorStore</span>.search(<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;query, <br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;k=<span className="text-[#79c0ff]">5</span>, <br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;strategy=<span className="text-[#a5d6ff]">&quot;hybrid&quot;</span><br/>
+            &nbsp;&nbsp;)<br/>
+            <br/>
+            &nbsp;&nbsp;<span className="text-gray-500"># Re-rank by semantic relevance</span><br/>
+            &nbsp;&nbsp;best_matches = <span className="text-[#79c0ff]">Reranker</span>.process(context)<br/>
+            <br/>
+            &nbsp;&nbsp;<span className="text-[#ff7b72]">return</span> best_matches
+          </div>
+        </div>
+      </div>
+    </motion.div>
+
+    {/* Floating Status Cards */}
+    <motion.div 
+      initial={{ x: -20, opacity: 0 }}
+      whileInView={{ x: 0, opacity: 1 }}
+      transition={{ delay: 0.5, duration: 0.8 }}
+      className="absolute top-20 -left-6 bg-white/95 backdrop-blur-md p-4 rounded-2xl shadow-xl border border-gray-100 flex items-center gap-4 z-20"
+    >
+      <div className="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center text-blue-600">
+        <Search className="w-5 h-5" />
+      </div>
+      <div>
+        <div className="text-[10px] uppercase tracking-widest text-gray-400 font-bold mb-0.5">Vector DB</div>
+        <div className="text-sm font-medium text-black">Context Retrieved</div>
+      </div>
+      <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse ml-2" />
+    </motion.div>
+
+    <motion.div 
+      initial={{ x: 20, opacity: 0 }}
+      whileInView={{ x: 0, opacity: 1 }}
+      transition={{ delay: 1, duration: 0.8 }}
+      className="absolute bottom-20 -right-6 bg-white/95 backdrop-blur-md p-4 rounded-2xl shadow-xl border border-gray-100 flex items-center gap-4 z-20"
+    >
+      <div className="w-10 h-10 rounded-full bg-purple-50 flex items-center justify-center text-purple-600">
+        <Check className="w-5 h-5" />
+      </div>
+      <div>
+        <div className="text-[10px] uppercase tracking-widest text-gray-400 font-bold mb-0.5">Agentic Check</div>
+        <div className="text-sm font-medium text-black">Source Validated</div>
+      </div>
+    </motion.div>
+  </div>
+);
+
+const PerformanceCapsule = ({ label, value }: { label: string; value: number }) => (
+  <div className="group">
+    <div className="flex justify-between items-end mb-4">
+      <span className="text-sm font-mono uppercase tracking-widest text-gray-400">{label}</span>
+      <span className="text-3xl font-medium tracking-tighter">{value}%</span>
     </div>
-    <div className="h-1 w-full bg-gray-100 rounded-full overflow-hidden">
+    <div className="relative h-4 w-full bg-gray-50 rounded-full overflow-hidden border border-gray-100">
       <motion.div 
         initial={{ width: 0 }}
         whileInView={{ width: `${value}%` }}
         viewport={{ once: true }}
-        transition={{ duration: 1.5 }}
-        className="h-full bg-black rounded-full"
-      />
+        transition={{ duration: 1.5, ease: "circOut" }}
+        className="absolute inset-y-0 left-0 bg-black rounded-full"
+      >
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent animate-shimmer" />
+      </motion.div>
     </div>
   </div>
 );

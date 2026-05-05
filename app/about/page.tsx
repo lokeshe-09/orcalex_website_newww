@@ -51,7 +51,7 @@ export default function About() {
             <ValueCard 
               icon={<Target className="w-6 h-6" />}
               title="Innovation"
-              description="Pushing boundaries with GRPO-based fine-tuning and minimal data points."
+              description="Pushing boundaries with advanced SFT, GRPO, GSPO, and DR-GRPO fine-tuning."
             />
             <ValueCard 
               icon={<Users className="w-6 h-6" />}

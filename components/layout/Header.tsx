@@ -20,10 +20,13 @@ const Header = () => {
 
   const navItems = [
     { label: 'Product', href: '/' },
-    { label: 'Use Cases', href: '/services', hasDropdown: true },
-    { label: 'Pricing', href: '/demo' },
+    { label: 'About Us', href: '/about' },
+    { label: 'Our Services', href: '/services', hasDropdown: true },
+    { label: 'Technologies', href: '/technologies', hasDropdown: true },
+    { label: 'Case Studies', href: '/case-studies' },
     { label: 'Blog', href: '/blog' },
-    { label: 'Resources', href: '/technologies', hasDropdown: true },
+    { label: 'Pricing', href: '/demo' },
+    { label: 'Contact Us', href: '/contact' },
   ];
 
   return (

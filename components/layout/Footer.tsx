@@ -34,10 +34,12 @@ const Footer = () => {
             <div>
               <h3 className="text-sm font-mono uppercase tracking-widest text-gray-400 mb-8">Navigation</h3>
               <ul className="space-y-4">
+                <FooterLink href="/" label="Product" />
                 <FooterLink href="/about" label="About Us" />
                 <FooterLink href="/services" label="Our Services" />
                 <FooterLink href="/technologies" label="Technologies" />
                 <FooterLink href="/case-studies" label="Case Studies" />
+                <FooterLink href="/blog" label="Blog" />
                 <FooterLink href="/contact" label="Contact Us" />
               </ul>
             </div>

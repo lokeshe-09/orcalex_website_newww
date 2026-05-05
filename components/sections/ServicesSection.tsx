@@ -8,7 +8,7 @@ import { Check, ArrowRight } from 'lucide-react';
 
 const ServicesSection = () => {
   return (
-    <section className="py-32 bg-white relative overflow-hidden">
+    <section id="services" className="py-32 bg-white relative overflow-hidden">
       <div className="container mx-auto px-6 max-w-7xl">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-20">
           <div className="max-w-2xl">
@@ -56,12 +56,12 @@ const ServicesSection = () => {
           
           <ServiceCard 
             imageSrc="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=1000"
-            title="LLM Fine-Tuning"
-            description="Custom language models fine-tuned for your specific domain and use cases using advanced GRPO methods."
+            title="Advanced LLM Fine-Tuning"
+            description="Custom language models fine-tuned for your specific domain and use cases using SFT, GRPO, and hybrid optimization methods."
             features={[
-              "GRPO-based tuning",
-              "Low-data optimization",
-              "Domain-specific",
+              "SFT & GRPO methods",
+              "DR-GRPO stability",
+              "Domain-specific tuning",
               "Rapid deployment"
             ]}
             link="/services#fine-tuning"

@@ -414,20 +414,30 @@ function FeedbackItem({ type, title, desc }: { type: 'success' | 'error' | 'info
 
 function ProgressSegment({ label, percent, color }: { label: string, percent: number, color: 'black' | 'gray' }) {
   return (
-    <div className="space-y-2">
-      <div className="flex justify-between items-center text-xs font-bold uppercase tracking-widest">
-        <span>{label}</span>
-        <span className={color === 'black' ? 'text-black' : 'text-gray-400'}>{percent}%</span>
+    <motion.div 
+      initial={{ opacity: 0, x: -10 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true }}
+      className="p-6 rounded-[2rem] border border-gray-100 bg-white shadow-sm hover:shadow-md transition-all group"
+    >
+      <div className="flex justify-between items-center mb-4">
+        <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400">{label}</span>
+        <span className={`text-2xl font-medium tracking-tighter ${color === 'black' ? 'text-black' : 'text-gray-400'}`}>{percent}%</span>
       </div>
-      <div className="w-full h-1.5 bg-gray-100 rounded-full overflow-hidden">
-        <motion.div 
-          initial={{ width: 0 }}
-          whileInView={{ width: `${percent}%` }}
-          viewport={{ once: true }}
-          className={`h-full ${color === 'black' ? 'bg-black' : 'bg-gray-400'}`}
-        />
+      
+      <div className="flex gap-1.5 h-1.5">
+        {[...Array(10)].map((_, i) => (
+          <motion.div
+            key={i}
+            initial={{ opacity: 0.1 }}
+            whileInView={{ opacity: i < percent / 10 ? 1 : 0.1 }}
+            viewport={{ once: true }}
+            transition={{ delay: i * 0.05 }}
+            className={`flex-1 rounded-full ${color === 'black' ? 'bg-black' : 'bg-gray-400'}`}
+          />
+        ))}
       </div>
-    </div>
+    </motion.div>
   );
 }
 
