@@ -3,7 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Phone, Mail, Globe, MapPin, X, Code } from 'lucide-react';
+import { Phone, Mail, Globe, MapPin, Linkedin, Twitter, Github } from 'lucide-react';
 
 const Footer = () => {
   return (
@@ -29,9 +29,9 @@ const Footer = () => {
               Cutting-edge AI solutions for education, manufacturing, and enterprise applications. Building the agentic-first era.
             </p>
             <div className="flex gap-4">
-              <SocialLink href="https://linkedin.com/in/dr-praveen-jambholkar" icon={<Globe className="w-5 h-5" />} />
-              <SocialLink href="https://twitter.com/orcalextech" icon={<X className="w-5 h-5" />} />
-              <SocialLink href="https://github.com/orcalextech" icon={<Code className="w-5 h-5" />} />
+              <SocialLink href="https://linkedin.com/in/dr-praveen-jambholkar" icon={<Linkedin className="w-5 h-5" />} />
+              <SocialLink href="https://twitter.com/orcalextech" icon={<Twitter className="w-5 h-5" />} />
+              <SocialLink href="https://github.com/orcalextech" icon={<Github className="w-5 h-5" />} />
             </div>
           </div>
           

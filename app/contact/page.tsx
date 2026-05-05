@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { motion } from 'motion/react';
-import { Mail, Globe, MapPin, Phone, ArrowRight, MessageSquare, BookOpen, ShieldCheck, Zap, Database, Briefcase, Code, Send } from 'lucide-react';
+import { Mail, Globe, MapPin, Phone, ArrowRight, MessageSquare, BookOpen, ShieldCheck, Zap, Database, Briefcase, Linkedin, Twitter, Github } from 'lucide-react';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -134,9 +134,9 @@ export default function Contact() {
               <div className="pt-8">
                 <p className="text-sm font-bold uppercase tracking-widest text-black mb-6">Social Nodes</p>
                 <div className="flex gap-4">
-                  <SocialNode href="https://linkedin.com/in/dr-praveen-jambholkar" icon={<Globe />} />
-                  <SocialNode href="https://twitter.com/orcalextech" icon={<Send />} />
-                  <SocialNode href="https://github.com/orcalextech" icon={<Code />} />
+                  <SocialNode href="https://linkedin.com/in/dr-praveen-jambholkar" icon={<Linkedin />} />
+                  <SocialNode href="https://twitter.com/orcalextech" icon={<Twitter />} />
+                  <SocialNode href="https://github.com/orcalextech" icon={<Github />} />
                   <SocialNode href="tel:+918008066228" icon={<Phone />} />
                 </div>
               </div>
