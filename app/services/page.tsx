@@ -13,7 +13,6 @@ import {
   Search, 
   Settings2, 
   Bot, 
-  BarChart,
   ArrowRight
 } from 'lucide-react';
 

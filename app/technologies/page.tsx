@@ -5,16 +5,10 @@ import Link from 'next/link';
 import { motion } from 'motion/react';
 import { 
   Cpu, 
-  Database, 
-  Network, 
-  Zap, 
-  ShieldCheck, 
-  Globe,
   ArrowRight,
   Search,
   Settings2,
   Bot,
-  Layers,
   Check
 } from 'lucide-react';
 
@@ -238,7 +232,7 @@ const TechSection = ({ id, badge, title, description, icon, features, insight, r
         <div className="w-10 h-10 rounded-full bg-white border border-gray-100 flex items-center justify-center flex-shrink-0 text-black">
           {icon}
         </div>
-        <p className="text-sm text-gray-600 italic">"{insight}"</p>
+        <p className="text-sm text-gray-600 italic">&quot;{insight}&quot;</p>
       </div>
     </motion.div>
 

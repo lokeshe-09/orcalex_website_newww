@@ -4,7 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'motion/react';
-import { ArrowRight, Calendar, Tag } from 'lucide-react';
+import { ArrowRight, Calendar } from 'lucide-react';
 
 const blogPosts = [
   {

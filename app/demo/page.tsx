@@ -7,7 +7,6 @@ import {
   ArrowRight, 
   Lightbulb, 
   FileText, 
-  Search, 
   BarChart3, 
   Upload, 
   Camera, 
@@ -15,7 +14,8 @@ import {
   AlertCircle,
   HelpCircle,
   Layers,
-  Sparkles
+  Sparkles,
+  Zap
 } from 'lucide-react';
 
 type TabId = "question-generation" | "step-solutions" | "handwriting" | "gap-analysis";
@@ -143,7 +143,7 @@ export default function Demo() {
   );
 }
 
-function DemoTabButton({ id, label, icon, active, onClick }: { id: TabId, label: string, icon: React.ReactNode, active: boolean, onClick: () => void }) {
+function DemoTabButton({ label, icon, active, onClick }: { label: string, icon: React.ReactNode, active: boolean, onClick: () => void }) {
   return (
     <button 
       onClick={onClick}

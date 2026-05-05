@@ -3,7 +3,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { motion } from 'motion/react';
-import { Target, Users, Zap, Shield, ChevronRight, ArrowRight } from 'lucide-react';
+import { Target, Users, Zap, Shield, ArrowRight } from 'lucide-react';
 
 export default function About() {
   return (
