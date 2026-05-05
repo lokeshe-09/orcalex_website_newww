@@ -11,7 +11,7 @@ const blogPosts = [
     id: 1,
     title: "Agentic AI: The Future of Autonomous Systems",
     description: "Discover how Agentic AI is revolutionizing autonomous systems and why AI without agency is like bringing a knife to a gun fight. Learn about the latest advancements in AI technology.",
-    image: "/blog/1740802037671.jpeg",
+    image: "https://images.unsplash.com/photo-1675271591211-126ad94e495d?auto=format&fit=crop&q=80&w=1000",
     slug: "Agentic-AI",
     date: "Feb 18, 2025",
     category: "AI Technology"
@@ -20,7 +20,7 @@ const blogPosts = [
     id: 2,
     title: "NVIDIA AI Summit: Shaping the Future of AI Development",
     description: "Explore the groundbreaking innovations and future of AI development from the NVIDIA AI Summit. Learn about cutting-edge AI solutions and platforms.",
-    image: "/blog/nvidia.jpeg",
+    image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1000",
     slug: "NVIDIA-AI-Summit",
     date: "Dec 19, 2024",
     category: "AI Development"
@@ -29,7 +29,7 @@ const blogPosts = [
     id: 3,
     title: "SuperAI Singapore: Leading the AI Innovation Revolution",
     description: "Dive into the world of AI innovation at SuperAI Singapore. Discover how this hub is transforming the landscape of artificial intelligence and machine learning.",
-    image: "/blog/superai.jpeg",
+    image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&q=80&w=1000",
     slug: "SuperAI-Singapore",
     date: "Aug 20, 2024",
     category: "AI Innovation"

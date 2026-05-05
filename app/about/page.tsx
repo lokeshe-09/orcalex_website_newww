@@ -131,7 +131,7 @@ export default function About() {
               className="relative aspect-square max-w-md mx-auto w-full grayscale hover:grayscale-0 transition-all duration-700 rounded-3xl overflow-hidden shadow-2xl"
             >
               <Image 
-                src="/image.png" 
+                src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=800" 
                 alt="Dr. Praveen Jambholkar" 
                 fill 
                 className="object-cover"

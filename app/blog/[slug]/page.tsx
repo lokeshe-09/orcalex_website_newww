@@ -19,7 +19,7 @@ One simply cannot use endpoints (APIs) of publicly hosted models. That would be 
 As an aside, in this age of Al, true value addition is in adding 'Innovation', which comes from a combination of deep domain knowledge and Al tech.
 
 The source of such innovation can come from various things. My recent small pilgrimage to various places in India, culminating to our maha kumbh participation was one such booster - I can definitely think more holistically, and with equanimity and humility.`,
-        image: "/blog/1740802037671.jpeg",
+        image: "https://images.unsplash.com/photo-1675271591211-126ad94e495d?auto=format&fit=crop&q=80&w=1000",
         slug: "Agentic-AI",
         date: "Feb 18, 2025",
         category: "AI Technology"
@@ -33,7 +33,7 @@ The source of such innovation can come from various things. My recent small pilg
 With insightful keynotes from industry leaders, hands-on workshops, and discussions on topics like AI acceleration, deep learning, edge computing, and generative AI, the event provided a roadmap for organizations looking to refine and scale their AI solutions.
 
 Whether you’re an AI enthusiast, a developer, or a business leader, the summit was a must-attend event for pivoting your AI journey toward efficiency, scalability, and groundbreaking innovation.`,
-        image: "/blog/nvidia.jpeg",
+        image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1000",
         slug: "NVIDIA-AI-Summit",
         date: "Dec 19, 2024",
         category: "AI Development"
@@ -47,7 +47,7 @@ Whether you’re an AI enthusiast, a developer, or a business leader, the summit
 The event covered groundbreaking advancements in large language models, AI ethics, multimodal AI, and real-world applications across industries. With thought-provoking discussions, hands-on sessions, and keynotes from pioneers in the field, SuperAI Singapore provided deep insights into the evolving AI landscape.
 
 For anyone passionate about AI and its transformative impact, this conference was a goldmine of ideas, innovation, and collaboration. 🚀`,
-        image: "/blog/superai.jpeg",
+        image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&q=80&w=1000",
         slug: "SuperAI-Singapore",
         date: "Aug 20, 2024",
         category: "AI Innovation"

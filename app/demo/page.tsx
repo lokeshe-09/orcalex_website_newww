@@ -143,7 +143,7 @@ export default function Demo() {
   );
 }
 
-function DemoTabButton({ label, icon, active, onClick }: { label: string, icon: React.ReactNode, active: boolean, onClick: () => void }) {
+function DemoTabButton({ label, icon, active, onClick }: { id: TabId, label: string, icon: React.ReactNode, active: boolean, onClick: () => void }) {
   return (
     <button 
       onClick={onClick}
